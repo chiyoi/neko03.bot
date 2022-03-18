@@ -8,4 +8,4 @@ class data:
         os.mkdir(cache)
 
 class ckpt:
-    Gs = os.path.join(root, 'Gs.pth')
+    Gs = os.path.join(root, 'assets', 'Gs.pth')
