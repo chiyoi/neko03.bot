@@ -1,0 +1,12 @@
+requests
+aiohttp
+aiofiles
+numpy
+scipy
+nb-cli
+nonebot-adapter-onebot
+opencv-python
+pillow
+tensorboard
+torch
+torchvision
