@@ -1,11 +1,10 @@
-import os
 import random
 import asyncio
 import nonebot
 from nonebot.log import logger
 import nonebot.adapters.onebot.v11 as onebot
-from nonebot_utils import STATE, cvtfile
 
+from ..nonebot_utils import STATE, cvtfile
 from .config import assets
 
 #.data
@@ -30,7 +29,7 @@ async def _on_bot_connect():
 atri_on_command = nonebot.on_command('atri', permission=nonebot.permission.SUPERUSER, block=False, priority=5)
 
 @atri_on_command.handle()
-async def _session_1(event: onebot.Event, matcher: nonebot.matcher.Matcher):
+async def _session_1(matcher: nonebot.matcher.Matcher):
     matcher.stop_propagation()
     nonebot.logger.debug("config: {}".format(driver.config))
     nonebot.logger.debug("driver.config.dict(): {}".format(driver.config.dict()))

@@ -4,8 +4,8 @@ import aiohttp
 import nonebot
 from nonebot.log import logger
 import nonebot.adapters.onebot.v11 as onebot
-from nonebot_utils import STATE, cvtfile
 
+from ..nonebot_utils import STATE, cvtfile
 from .preprocess import keyword_filter, parse_cmd
 from .config import origins, data
 

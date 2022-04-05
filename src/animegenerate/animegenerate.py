@@ -5,9 +5,9 @@ import cv2
 import torch
 import nonebot
 import nonebot.adapters.onebot.v11 as onebot
-from nonebot_utils import cvtfile
-from . import stylegan2
 
+from ..nonebot_utils import cvtfile
+from . import stylegan2
 from .preprosess import keyword_filter
 from . import config
 

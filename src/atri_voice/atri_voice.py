@@ -3,8 +3,8 @@ import json
 import random
 import nonebot
 import nonebot.adapters.onebot.v11 as onebot
-from nonebot_utils import cvtfile
 
+from ..nonebot_utils import cvtfile
 from .config import assets
 
 atri_voice_on_poke = nonebot.on_notice(priority=25)
