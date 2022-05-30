@@ -30,7 +30,7 @@ async def atri_exec_session(event: onebot.Event, matcher: Matcher):
         await matcher.finish("<nil>")
     await matcher.send(output)
 
-atri_echo = nonebot.on_command("echo", permission=nonebot.permission.SUPERUSER, block=True, priority=30)
+atri_echo = nonebot.on_command("eval", permission=nonebot.permission.SUPERUSER, block=True, priority=30)
 
 @atri_echo.handle()
 async def atri_echo_session(event: onebot.Event, matcher: Matcher):
