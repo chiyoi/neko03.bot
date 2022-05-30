@@ -37,7 +37,7 @@ async def atri_echo_session(event: onebot.Event, matcher: Matcher):
     expr = event.get_plaintext()[6:]
     output = ""
     try:
-        eval("output = str({})".format(expr))
+        output = str(eval(expr))
     except Exception as exc:
         await matcher.finish(str(exc))
     if len(output) == 0:
