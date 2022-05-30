@@ -8,5 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 WORKDIR /neko
 COPY config.env bot.py ./
 COPY src ./src
+COPY assets ./assets
 
 CMD ["python3", "-m", "nb_cli", "run"]
