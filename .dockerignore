@@ -1,1 +1,6 @@
 .gitignore
+__pycache__
+gocq
+build-image.sh
+docker-entry.sh
+update.sh
