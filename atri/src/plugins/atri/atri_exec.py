@@ -4,6 +4,11 @@ from io import StringIO
 import nonebot
 import nonebot.adapters.onebot.v11 as onebot
 
+import numpy
+import scipy
+from scipy import stats
+from scipy import optimize
+
 stdout = sys.stdout
 
 atri_exec = nonebot.on_command("exec", permission=nonebot.permission.SUPERUSER, block=True, priority=30)
