@@ -2,6 +2,7 @@ import sys
 from io import StringIO
 
 import nonebot
+from nonebot.matcher import Matcher
 import nonebot.adapters.onebot.v11 as onebot
 
 import numpy
@@ -15,16 +16,30 @@ stdout = sys.stdout
 atri_exec = nonebot.on_command("exec", permission=nonebot.permission.SUPERUSER, block=True, priority=30)
 
 @atri_exec.handle()
-async def atri_exec_session(event: onebot.Event, matcher: nonebot.matcher.Matcher):
+async def atri_exec_session(event: onebot.Event, matcher: Matcher):
     expr = event.get_plaintext()[6:]
     output = StringIO()
     sys.stdout = output
     try:
         exec(expr)
-    except Exception as e:
-        print(e)
+    except Exception as exc:
+        print(exc)
     sys.stdout = stdout
     output = output.getvalue()
     if len(output) == 0:
-        output = "empty output"
+        await matcher.finish("<nil>")
+    await matcher.send(output)
+
+atri_echo = nonebot.on_command("echo", permission=nonebot.permission.SUPERUSER, block=True, priority=30)
+
+@atri_echo.handle()
+async def atri_echo_session(event: onebot.Event, matcher: Matcher):
+    expr = event.get_plaintext()[6:]
+    output = ""
+    try:
+        exec("output = str({})".format(expr))
+    except Exception as exc:
+        await matcher.finish(exc)
+    if len(output) == 0:
+        await matcher.send("<nil>")
     await matcher.send(output)
