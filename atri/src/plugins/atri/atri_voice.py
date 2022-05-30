@@ -1,7 +1,9 @@
 from os import path
 import json
 import random
+
 import nonebot
+from nonebot.matcher import Matcher
 import nonebot.adapters.onebot.v11 as onebot
 
 from ...utils import cvtfile
@@ -13,7 +15,7 @@ atri_voice_1 = nonebot.on_notice(block=False, priority=25)
 atri_voice_2 = nonebot.on_message(block=False, priority=25)
 
 @atri_voice_1.handle()
-async def atri_voice_1_session(event: onebot.Event, matcher: nonebot.matcher.Matcher):
+async def atri_voice_1_session(event: onebot.Event, matcher: Matcher):
     notice = event.get_event_name()
     if notice != 'notice.notify.poke':
         await matcher.finish()
@@ -21,7 +23,7 @@ async def atri_voice_1_session(event: onebot.Event, matcher: nonebot.matcher.Mat
     await send_record(matcher)
 
 @atri_voice_2.handle()
-async def atri_voice_2_session(event: onebot.Event, matcher: nonebot.matcher.Matcher):
+async def atri_voice_2_session(event: onebot.Event, matcher: Matcher):
     message = event.get_message().extract_plain_text()
     if not message.startswith('[戳一戳]'):
         await matcher.finish()

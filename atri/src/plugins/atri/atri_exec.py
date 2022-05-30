@@ -14,7 +14,7 @@ from math import *
 
 stdout = sys.stdout
 
-atri_exec = nonebot.on_command("exec", permission=nonebot.permission.SUPERUSER, block=True, priority=30)
+atri_exec = nonebot.on_command("exec", block=True, priority=30)
 
 @atri_exec.handle()
 async def atri_exec_session(event: onebot.Event, matcher: Matcher):
@@ -31,7 +31,7 @@ async def atri_exec_session(event: onebot.Event, matcher: Matcher):
         await matcher.finish("<nil>")
     await matcher.finish(output)
 
-atri_eval = nonebot.on_command("eval", permission=nonebot.permission.SUPERUSER, block=True, priority=30)
+atri_eval = nonebot.on_command("eval", block=True, priority=30)
 
 @atri_eval.handle()
 async def atri_eval_session(event: onebot.Event, matcher: Matcher):

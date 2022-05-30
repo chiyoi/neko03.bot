@@ -2,7 +2,9 @@ from os import path
 import json
 import aiofiles
 import aiohttp
+
 import nonebot
+from nonebot.matcher import Matcher
 
 from ...utils import time, cvtfile
 
@@ -31,7 +33,7 @@ cd_checker = time.now()
 eroira = nonebot.on_keyword({"色图"}, block=True, priority=20)
 
 @eroira.handle()
-async def _session_1(matcher: nonebot.matcher.Matcher):
+async def _session_1(matcher: Matcher):
     current = time.now()
     if current - cd_checker < cd:
         await matcher.finish("冷却中...")

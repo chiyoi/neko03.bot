@@ -2,6 +2,7 @@ import random
 from glob import glob
 
 import nonebot
+from nonebot.matcher import Matcher
 
 from ...utils import cvtfile
 
@@ -15,5 +16,5 @@ replies = [
 atri_reply = nonebot.on_message(rule=nonebot.rule.to_me(), block=False, priority=100)
 
 @atri_reply.handle()
-async def atri_reply_session(matcher: nonebot.matcher.Matcher):
+async def atri_reply_session(matcher: Matcher):
     await matcher.send(cvtfile.auto(random.choice(replies)))
