@@ -6,4 +6,3 @@ aiohttp
 aiofiles
 numpy
 scipy
-opencv-python
