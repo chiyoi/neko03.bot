@@ -8,6 +8,7 @@ import numpy
 import scipy
 from scipy import stats
 from scipy import optimize
+from math import *
 
 stdout = sys.stdout
 
