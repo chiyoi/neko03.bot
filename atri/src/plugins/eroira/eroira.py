@@ -56,10 +56,10 @@ async def get_img() -> tuple[str, str]:
             img_origin = img_obj['urls']['original']
             disp = disp_tmpl.format(img_obj['title'], img_obj['pid'], img_obj['author'], img_obj['uid'])
         async with session.get(img_origin, headers=headers) as res:
-            print(img_origin)
             if not res.ok:
                 raise ConnectionError
             img = path.join("tmp", path.basename(img_origin))
+            print(img)
             async with aiofiles.open(img, 'wb') as f:
                 await f.write(await res.read())
     return img, disp
