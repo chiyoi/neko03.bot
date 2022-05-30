@@ -5,8 +5,9 @@ import nonebot
 from nonebot.matcher import Matcher
 import nonebot.adapters.onebot.v11 as onebot
 
-import numpy
+import numpy as np
 import scipy
+import sympy
 from scipy import stats
 from scipy import optimize
 from math import *
@@ -28,12 +29,12 @@ async def atri_exec_session(event: onebot.Event, matcher: Matcher):
     output = output.getvalue()
     if len(output) == 0:
         await matcher.finish("<nil>")
-    await matcher.send(output)
+    await matcher.finish(output)
 
-atri_echo = nonebot.on_command("eval", permission=nonebot.permission.SUPERUSER, block=True, priority=30)
+atri_eval = nonebot.on_command("eval", permission=nonebot.permission.SUPERUSER, block=True, priority=30)
 
-@atri_echo.handle()
-async def atri_echo_session(event: onebot.Event, matcher: Matcher):
+@atri_eval.handle()
+async def atri_eval_session(event: onebot.Event, matcher: Matcher):
     expr = event.get_plaintext()[6:]
     output = ""
     try:
@@ -42,4 +43,10 @@ async def atri_echo_session(event: onebot.Event, matcher: Matcher):
         await matcher.finish(str(exc))
     if len(output) == 0:
         await matcher.finish("<nil>")
-    await matcher.send(output)
+    await matcher.finish(output)
+
+atri_echo = nonebot.on_command("echo", block=True, priority=30)
+
+@atri_echo.handle()
+async def atri_echo_session(event: onebot.Event, matcher: Matcher):
+    await matcher.finish(event.get_plaintext()[6:])
