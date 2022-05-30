@@ -3,7 +3,6 @@ import json
 import aiofiles
 import aiohttp
 import nonebot
-import nonebot.adapters.onebot.v11 as onebot
 
 from ...utils import time, cvtfile
 
@@ -38,7 +37,7 @@ async def _session_1(matcher: nonebot.matcher.Matcher):
         await matcher.finish("冷却中...")
     await matcher.send("让我找找...")
     img, disp = await get_img()
-    await matcher.send(onebot.MessageSegment(cvtfile.image(img)) + disp)
+    await matcher.send(cvtfile.image(img) + disp)
 
 async def get_img() -> tuple[str, str]:
     """
@@ -59,7 +58,6 @@ async def get_img() -> tuple[str, str]:
             if not res.ok:
                 raise ConnectionError
             img = path.join("tmp", path.basename(img_origin))
-            print(img)
             async with aiofiles.open(img, 'wb') as f:
                 await f.write(await res.read())
     return img, disp
