@@ -7,6 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 WORKDIR /atri
 COPY ./atri .
-COPY assets ./assets
+COPY ./assets/assets ./assets
 
-CMD ["python3", "-m", "nb_cli", "run"]
+CMD ["nb", "run"]
