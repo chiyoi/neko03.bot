@@ -2,7 +2,7 @@ FROM golang:1.18
 
 WORKDIR /build
 COPY ./go-cqhttp ./
-RUN GO111MODULE=auto CGO_ENABLED=0 go build -ldflags "-s -w -extldflags '-static'" -o ../target/go-cqhttp
+RUN GO111MODULE=auto CGO_ENABLED=0 GOPROXY=https://goproxy.cn,direct go build -ldflags "-s -w -extldflags '-static'" -o ../target/go-cqhttp
 
 FROM alpine
 
