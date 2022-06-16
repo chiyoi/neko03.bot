@@ -21,10 +21,10 @@ headers = {
         }
 
 disp_tmpl = """\
-title {}
-pid {}
-author {}
-uid {}"""
+title: {}
+pid: {}
+author: {}
+uid: {}"""
 
 cd = time.second
 
