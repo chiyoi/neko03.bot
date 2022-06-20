@@ -16,8 +16,7 @@ atri_voice_2 = nonebot.on_message(block=False, priority=25)
 
 @atri_voice_1.handle()
 async def atri_voice_1_session(event: onebot.Event, matcher: Matcher):
-    notice = event.get_event_name()
-    if notice != 'notice.notify.poke':
+    if event.get_event_name() != 'notice.notify.poke' or event.target_id not in (event.self_id, 0):
         await matcher.finish()
     matcher.stop_propagation()
     await send_record(matcher)
@@ -25,7 +24,7 @@ async def atri_voice_1_session(event: onebot.Event, matcher: Matcher):
 @atri_voice_2.handle()
 async def atri_voice_2_session(event: onebot.Event, matcher: Matcher):
     message = event.get_message().extract_plain_text()
-    if not message.startswith('[戳一戳]'):
+    if not message.startswith('[戳一戳]') or event.target_id not in (event.self_id, 0):
         await matcher.finish()
     matcher.stop_propagation()
     await send_record(matcher)

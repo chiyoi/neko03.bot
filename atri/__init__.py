@@ -1,1 +1,2 @@
-from .plugins import atri, eroira
+from .plugins import eroira
+from .plugins import atri
