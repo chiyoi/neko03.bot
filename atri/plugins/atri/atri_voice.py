@@ -3,7 +3,7 @@ import json
 import random
 
 import nonebot
-import nonebot.adapters.onebot.v11 as onebot
+from nonebot.adapters.onebot.v11 import Event
 from nonebot.matcher import Matcher
 from nonebot import logger
 
@@ -17,7 +17,7 @@ atri_voice_2 = nonebot.on_message(block=False, priority=25)
 
 
 @atri_voice_1.handle()
-async def atri_voice_1_session(event: onebot.Event, matcher: Matcher):
+async def atri_voice_1_session(event: Event, matcher: Matcher):
     if event.get_event_name() != 'notice.notify.poke' or event.dict()["target_id"] not in (event.self_id, 0):
         await matcher.finish()
     matcher.stop_propagation()
@@ -25,7 +25,7 @@ async def atri_voice_1_session(event: onebot.Event, matcher: Matcher):
 
 
 @atri_voice_2.handle()
-async def atri_voice_2_session(event: onebot.Event, matcher: Matcher):
+async def atri_voice_2_session(event: Event, matcher: Matcher):
     message = event.get_message().extract_plain_text()
     if not message.startswith('[戳一戳]') or event.dict()["target_id"] not in (event.self_id, 0):
         await matcher.finish()
@@ -35,8 +35,8 @@ async def atri_voice_2_session(event: onebot.Event, matcher: Matcher):
 
 async def send_record(matcher: Matcher):
     text, voice = random_voice()
-    logger.debug(text)
-    logger.debug(matcher.__dict__)
+    print(text)
+    print(matcher.__dict__)
     await matcher.send(text)
     await matcher.send(cvtfile.record(voice))
 
