@@ -3,13 +3,15 @@ from io import StringIO
 
 import nonebot
 import nonebot.adapters.onebot.v11 as onebot
+from nonebot.matcher import Matcher
+
 import numpy
 import scipy
-from nonebot.matcher import Matcher
 from scipy import optimize
 from scipy import stats
+from math import *
 
-_ = numpy, scipy, stats, optimize
+_ = e, numpy, scipy, optimize, stats
 
 stdout = sys.stdout
 
