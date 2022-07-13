@@ -5,7 +5,6 @@ import random
 import nonebot
 from nonebot.adapters.onebot.v11 import Event
 from nonebot.matcher import Matcher
-from nonebot import logger
 
 from ...utils import cvtfile
 
@@ -35,8 +34,6 @@ async def atri_voice_2_session(event: Event, matcher: Matcher):
 
 async def send_record(matcher: Matcher):
     text, voice = random_voice()
-    print(text)
-    print(matcher.__dict__)
     await matcher.send(text)
     await matcher.send(cvtfile.record(voice))
 
