@@ -1,10 +1,10 @@
-from os import path
 import json
 import random
+from os import path
 
 import nonebot
-from nonebot.matcher import Matcher
 import nonebot.adapters.onebot.v11 as onebot
+from nonebot.matcher import Matcher
 
 from ...utils import cvtfile
 
@@ -14,12 +14,14 @@ with open("assets/atri/atri_voice/text/atri.json") as f:
 atri_voice_1 = nonebot.on_notice(block=False, priority=25)
 atri_voice_2 = nonebot.on_message(block=False, priority=25)
 
+
 @atri_voice_1.handle()
 async def atri_voice_1_session(event: onebot.Event, matcher: Matcher):
     if event.get_event_name() != 'notice.notify.poke' or event.target_id not in (event.self_id, 0):
         await matcher.finish()
     matcher.stop_propagation()
     await send_record(matcher)
+
 
 @atri_voice_2.handle()
 async def atri_voice_2_session(event: onebot.Event, matcher: Matcher):
@@ -29,10 +31,12 @@ async def atri_voice_2_session(event: onebot.Event, matcher: Matcher):
     matcher.stop_propagation()
     await send_record(matcher)
 
+
 async def send_record(matcher: nonebot.matcher.Matcher):
     text, voice = random_voice()
     await matcher.send(text)
     await matcher.send(cvtfile.record(voice))
+
 
 def random_voice() -> tuple[str, str]:
     voice_obj = random.choice(voice_list)

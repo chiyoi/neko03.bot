@@ -11,14 +11,13 @@ from ...utils import time, cvtfile
 origin = "https://api.lolicon.app/setu/v2"
 
 headers = {
-        "Accept": "image/webp,image/png,image/svg+xml,image/*;q=0.8,video/*;q=0.8,*/*;q=0.5",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Host": "i.pximg.net",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Referer": "https://www.pixiv.net/",
-        "Connection": "keep-alive",
-        }
+    "Accept": "image/webp,image/png,image/svg+xml,image/*;q=0.8,video/*;q=0.8,*/*;q=0.5",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Host": "i.pximg.net",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://www.pixiv.net/",
+    "Connection": "keep-alive",
+}
 
 disp_tmpl = """\
 title: {}
@@ -32,6 +31,7 @@ cd_checker = time.now()
 
 eroira = nonebot.on_keyword({"色图"}, block=True, priority=20)
 
+
 @eroira.handle()
 async def _session_1(matcher: Matcher):
     current = time.now()
@@ -41,14 +41,15 @@ async def _session_1(matcher: Matcher):
     img, disp = await get_img()
     await matcher.send(cvtfile.image(img) + disp)
 
+
 async def get_img() -> tuple[str, str]:
     """
     get_img() (img: str, disp: str)
     """
     params = {
-            'r18': 2,
-            'proxy': 0,
-            }
+        'r18': 2,
+        'proxy': 0,
+    }
     async with aiohttp.ClientSession() as session:
         async with session.get(origin, params=params) as res:
             if not res.ok:

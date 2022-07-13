@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 WORKDIR /bot
 COPY ./atri ./atri
-COPY ./bot.py ./config.env ./
+COPY ./bot.py ./.env ./
 COPY ./assets/assets ./assets
 
 CMD ["nb", "run"]

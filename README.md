@@ -1,7 +1,7 @@
-# neko03.bot
-a bot built in python, with nonebot2 framework, has a QQ adapter.
-* qq: 3578191859
+atri_bot
 ---
+a bot wrote in python with nonebot2.
+***
 It doesn't have meaningful skill now. usage:
 * .echo - echo some text
 * .eval - call python eval(), loaded numpy and scipy

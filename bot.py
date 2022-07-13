@@ -3,7 +3,7 @@ import os.path as path
 import nonebot
 from nonebot.adapters.onebot.v11 import Adapter
 
-nonebot.init(_env_file='config.env')
+nonebot.init()
 app = nonebot.get_asgi()
 driver = nonebot.get_driver()
 driver.register_adapter(Adapter)

@@ -2,19 +2,19 @@ import sys
 from io import StringIO
 
 import nonebot
-from nonebot.matcher import Matcher
 import nonebot.adapters.onebot.v11 as onebot
-
-import numpy as np
+import numpy
 import scipy
-import sympy
-from scipy import stats
+from nonebot.matcher import Matcher
 from scipy import optimize
-from math import *
+from scipy import stats
+
+_ = numpy, scipy, stats, optimize
 
 stdout = sys.stdout
 
 atri_exec = nonebot.on_command("exec", block=True, priority=30)
+
 
 @atri_exec.handle()
 async def atri_exec_session(event: onebot.Event, matcher: Matcher):
@@ -31,7 +31,9 @@ async def atri_exec_session(event: onebot.Event, matcher: Matcher):
         await matcher.finish("<nil>")
     await matcher.finish(output)
 
+
 atri_eval = nonebot.on_command("eval", block=True, priority=30)
+
 
 @atri_eval.handle()
 async def atri_eval_session(event: onebot.Event, matcher: Matcher):
@@ -45,7 +47,9 @@ async def atri_eval_session(event: onebot.Event, matcher: Matcher):
         await matcher.finish("<nil>")
     await matcher.finish(output)
 
+
 atri_echo = nonebot.on_command("echo", block=True, priority=30)
+
 
 @atri_echo.handle()
 async def atri_echo_session(event: onebot.Event, matcher: Matcher):
