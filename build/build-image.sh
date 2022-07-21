@@ -1,2 +1,2 @@
 #!/bin/zsh
-docker build --tag chiyoi/neko03.bot .
+docker build --tag chiyoi/atri_bot .
