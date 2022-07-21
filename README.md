@@ -1,8 +1,9 @@
-atri_bot
+# Atri bot
 ---
 a bot wrote in python with nonebot2.
 ***
-It doesn't have meaningful skill now. usage:
+usage:
+
 * .echo - echo some text
 * .eval - call python eval(), loaded numpy and scipy
 * .exec - same with above but can solve multiple lines(call exec())
