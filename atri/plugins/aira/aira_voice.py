@@ -13,7 +13,7 @@ aira_voice = nonebot.on_message(block=False, priority=25)
 @aira_voice.handle()
 async def aira_voice_handler(event: Event, matcher: Matcher):
     message = event.get_message().extract_plain_text()
-    if not message == "aira":
+    if not message in ("aira", "アイラ"):
         await matcher.finish()
     matcher.stop_propagation()
     await matcher.send(voice_text)
