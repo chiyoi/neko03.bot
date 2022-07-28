@@ -7,7 +7,7 @@ atri_test = nonebot.on_command("test", permission=permission.SUPERUSER, block=Fa
 
 
 @atri_test.handle()
-async def atri_test_session1(event: onebot.Event, matcher: Matcher):
+async def atri_test_handler1(event: onebot.Event, matcher: Matcher):
     await matcher.send("event.dict: {}".format(event.dict()))
     await matcher.send("event.get_event_name: {}".format(event.get_event_name()))
     await matcher.send("event.get_event_description: {}".format(event.get_event_description()))

@@ -17,5 +17,5 @@ atri_reply = nonebot.on_message(rule=nonebot.rule.to_me(), block=False, priority
 
 
 @atri_reply.handle()
-async def atri_reply_session(matcher: Matcher):
+async def atri_reply_handler(matcher: Matcher):
     await matcher.send(cvtfile.auto(random.choice(replies)))
